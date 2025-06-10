@@ -1,12 +1,15 @@
 {
-  "name": "Ai-Career-monorepo",
+  "name": "ai-career-monorepo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
+    "check-types": "turbo run check-types",
+
+    "dev:web": "turbo run dev --filter=web",
+    "dev:mobile": "turbo run dev --filter=mobile"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

@@ -1,38 +1,63 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# -----------------------------
+# 🧱 Node & Workspace Caches
+# -----------------------------
+node_modules/
+apps/*/node_modules/
 
-# Dependencies
-node_modules
 .pnp
 .pnp.js
 
-# Local env files
+# -----------------------------
+# 🌐 Local Environment Variables
+# -----------------------------
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
 
-# Testing
-coverage
+# -----------------------------
+# 🧪 Testing & Coverage
+# -----------------------------
+coverage/
+.nyc_output/
 
-# Turbo
-.turbo
+# -----------------------------
+# ⚡️ Turborepo
+# -----------------------------
+.turbo/
 
-# Vercel
-.vercel
+# -----------------------------
+# ▲ Vercel (for web)
+# -----------------------------
+.vercel/
 
-# Build Outputs
+# -----------------------------
+# 🏗 Build Outputs
+# -----------------------------
 .next/
 out/
-build
-dist
+build/
+dist/
 
+# -----------------------------
+# 📱 Expo / React Native
+# -----------------------------
+.expo/
+.expo-shared/
+*.apk
+*.apks
+*.aab
+*.keystore
 
-# Debug
+# -----------------------------
+# 🐞 Debug & Logs
+# -----------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Misc
+# -----------------------------
+# 💻 OS Artifacts
+# -----------------------------
 .DS_Store
+Thumbs.db
 *.pem
