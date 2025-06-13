@@ -7,7 +7,7 @@ export const AiTools = () => {
             name:'AI Career Q&A Chat', 
             description: 'Ask questions about AI careers and get expert advice.',
             icon: '/ai_chatbot.png',
-            path: '/ai-chat',
+            path: '/ai-tools/ai-chat',
             button: 'Lets Chat',
         },
         {
