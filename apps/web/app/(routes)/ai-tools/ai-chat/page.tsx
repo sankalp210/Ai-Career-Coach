@@ -5,10 +5,38 @@ import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import { EmptyState } from "./_components/EmptyState";
 import { useState } from "react";
+import axios from "axios";
 
 function AiChat(){
 
-  const [userInput,setUserInput] = useState<string>()
+  const [userInput,setUserInput] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onSend = async () => {
+  if (!userInput?.trim()) return; // Don't send empty or whitespace-only strings
+
+  setLoading(true);
+  try {
+    const result = await axios.post('/api/ai-career-chat-agent', {
+      userInput: userInput.trim(),
+    });
+
+    if (result.status === 200) {
+      console.log("Response:", result.data);
+    } else {
+      console.error("Error:", result.statusText);
+    }
+
+  } catch (err) {
+    console.error("Request failed:", err);
+  } finally {
+    setLoading(false);
+    setUserInput("");
+  }
+};
+
+
+
 
   return (
     <div className="px-10 md:px-24 lg:px-36 xl:px-48 py-10 flex flex-col gap-6 h-full">
@@ -34,7 +62,7 @@ function AiChat(){
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             />
-            <Button><Send /></Button>
+            <Button onClick={onSend} disabled={loading}><Send /></Button>
           </div>
         </div>
 
