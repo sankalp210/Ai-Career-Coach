@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { v4 as uuidv4 } from 'uuid';
 
 interface AiToolCardProps {
     tool: {
@@ -14,6 +14,9 @@ interface AiToolCardProps {
 }       
 
 export const AiToolCard: React.FC<AiToolCardProps> = ({ tool }) => {
+
+    const id = uuidv4();
+
     return (
         <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
             <div className="flex items-center">
@@ -25,7 +28,7 @@ export const AiToolCard: React.FC<AiToolCardProps> = ({ tool }) => {
                     <p className="text-gray-600 dark:text-gray-400">
                         {tool.description}
                     </p>
-                    <Link href={tool.path}>
+                    <Link href={tool.path + "/" + id}>
                         <Button className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">{tool.button}</Button>
                     </Link>
                 </div>
