@@ -78,10 +78,22 @@ function AiChat({tool}: AiChatProps) {
 }, [messages, chatid]);
 
 const GetMessageList = async () => {
-  const result = await axios.get('/api/history?recordId=' + chatid);
-  console.log("Fetched messages:", result.data);
-  setMessages(result.data.content || []); 
-}
+  try {
+    const result = await axios.get('/api/history?recordId=' + chatid);
+    const content = result.data.content;
+
+    // Ensure messages is an array
+    if (Array.isArray(content)) {
+      setMessages(content);
+    } else {
+      setMessages([]); // or setMessages([{ role: "assistant", content: "Start your chat..." }])
+    }
+  } catch (err) {
+    console.error("Failed to fetch messages", err);
+    setMessages([]);
+  }
+};
+
 
 const onNewChat = async () => {
   const id = uuidv4();
